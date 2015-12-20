@@ -19,8 +19,9 @@ class FizzBuzz
     public function getData()
     {
         $numbers = array();
-        $numbers[0] = 1;
-        $numbers[2] = 'Fizz';
+        $numbers[1] = 1;
+        $numbers[3] = 'Fizz';
+        $numbers[5] = 'Buzz';
         return $numbers;
     }
 }

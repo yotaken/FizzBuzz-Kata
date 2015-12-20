@@ -19,7 +19,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
 
         $fizzBuzz = new FizzBuzz();
-        $this->assertTrue($fizzBuzz->getData()[0] == '1');
+        $this->assertTrue($fizzBuzz->getData()[1] == '1');
     }
 
     /** @test */
@@ -27,6 +27,13 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     {
 
         $fizzBuzz = new FizzBuzz();
-        $this->assertTrue($fizzBuzz->getData()[2] == 'Fizz');
+        $this->assertTrue($fizzBuzz->getData()[3] == 'Fizz');
+    }
+    /** @test */
+    public function fifth_number_is_buzz()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $this->assertTrue($fizzBuzz->getData()[5] == 'Buzz');
     }
 }
