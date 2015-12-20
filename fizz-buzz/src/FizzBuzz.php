@@ -14,12 +14,18 @@ class FizzBuzz
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
-    private function divisibleByThreeReturnsFizz($pos)
+    private function divisibleByThreeSetsPositionAsFizz($pos, $numbers)
     {
-        if($pos % 3 == 0) return 'Fizz';
-        return $pos;
+        if($pos % 3 == 0) $numbers[$pos] = 'Fizz';
+        return $numbers;
+    }
+
+    private function divisibleByFiveSetsPositionAsBuzz($pos, $numbers)
+    {
+        if($pos % 5 == 0) $numbers[$pos] = 'Buzz';
+        return $numbers;
     }
 
     /**
@@ -31,8 +37,8 @@ class FizzBuzz
         for($i = 1; $i < 101; $i++){
             $divider = true;
             $numbers[$i] = $i;
-            $numbers[$i] = $this->divisibleByThreeReturnsFizz($i);
-            if($i % 5 == 0) $numbers[$i] = 'Buzz';
+            $numbers = $this->divisibleByThreeSetsPositionAsFizz($i,$numbers);
+            $numbers = $this->divisibleByFiveSetsPositionAsBuzz($i,$numbers);
             if($i % 3 == 0 && $i % 5 == 0) $numbers[$i] = 'FizzBuzz';
             if($i%5 != 0 && $i%3 != 0) $divider = false;
             $has3InIt = strpos((string)$i, '3') !== false;
