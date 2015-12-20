@@ -68,6 +68,19 @@ class FizzBuzz
     }
 
     /**
+     * @return mixed
+     */
+    private function setFizzIfNumberContainsThree($pos, $numbers)
+    {
+        $divider = $this->isDivisibleByThreeOrFive($pos);
+        $has3InIt = $this->hasThreeInIt($pos);
+        $has5InIt = $this->hasFiveInIt($pos);
+        if(!$divider && $has3InIt && !$has5InIt) $numbers[$pos] = 'Fizz';
+
+        return $numbers;
+    }
+
+    /**
      * @return array
      */
     public function getData()
@@ -81,7 +94,7 @@ class FizzBuzz
             $divider = $this->isDivisibleByThreeOrFive($i);
             $has3InIt = $this->hasThreeInIt($i);
             $has5InIt = $this->hasFiveInIt($i);
-            if (!$divider && $has3InIt && !$has5InIt) { $numbers[$i] = 'Fizz'; }
+            $numbers = $this->setFizzIfNumberContainsThree($i,$numbers);
             if (!$divider && !$has3InIt && $has5InIt) { $numbers[$i] = 'Buzz'; }
             if (!$divider && $has3InIt && $has5InIt) { $numbers[$i] = 'FizzBuzz'; }
 
