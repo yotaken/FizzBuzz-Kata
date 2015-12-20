@@ -14,10 +14,13 @@ class FizzBuzz
     }
 
     /**
-     * @return bool
+     * @return string
      */
     public function getData()
     {
-        return '1';
+        $numbers = array();
+        $numbers[0] = 1;
+        $numbers[2] = 'Fizz';
+        return $numbers;
     }
 }
