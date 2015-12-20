@@ -26,9 +26,16 @@ class FizzBuzz
             if($i % 5 == 0) $numbers[$i] = 'Buzz';
             if($i % 3 == 0 && $i % 5 == 0) $numbers[$i] = 'FizzBuzz';
             if($i%5 != 0 && $i%3 != 0) $divider = false;
-            if (!$divider && strpos((string)$i,'3') !== false) $numbers[$i] = 'Fizz';
+            $has3InIt = strpos((string)$i, '3') !== false;
+            $has5InIt = strpos((string)$i, '5') !== false;
+            if (!$divider && $has3InIt && !$has5InIt) { $numbers[$i] = 'Fizz'; }
+            if (!$divider && !$has3InIt && $has5InIt) { $numbers[$i] = 'Buzz'; }
+
         }
 
         return $numbers;
     }
 }
+
+$numbers = new FizzBuzz();
+var_dump($numbers->getData());

@@ -88,7 +88,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function if_number_has_three_on_it_its_already_fizz()
+    public function if_number_has_three_in_it_its_already_fizz()
     {
 
         $fizzBuzz = new FizzBuzz();
@@ -97,7 +97,25 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         for($i=1; $i<count($numbers);$i++){
             $divider = true;
             if($i%5 != 0 && $i%3 != 0) $divider = false;
-            if (!$divider && strpos((string)$i,'3') !== false) { $this->assertTrue($numbers[$i] == 'Fizz'); }
+            $has3InIt = strpos((string)$i, '3') !== false;
+            $has5InIt = strpos((string)$i, '5') !== false;
+            if (!$divider && $has3InIt && !$has5InIt) { $this->assertTrue($numbers[$i] == 'Fizz'); }
+        }
+    }
+
+    /** @test */
+    public function if_number_has_five_in_it_its_already_buzz()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $numbers = $fizzBuzz->getData();
+
+        for($i=1; $i<count($numbers);$i++){
+            $divider = true;
+            $has3InIt = strpos((string)$i, '3') !== false;
+            $has5InIt = strpos((string)$i, '5') !== false;
+            if($i%5 != 0 && $i%3 != 0) $divider = false;
+            if (!$divider && !$has3InIt && $has5InIt) { $this->assertTrue($numbers[$i] == 'Buzz'); }
         }
     }
 }
