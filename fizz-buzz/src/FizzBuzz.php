@@ -14,7 +14,7 @@ class FizzBuzz
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getData()
     {
