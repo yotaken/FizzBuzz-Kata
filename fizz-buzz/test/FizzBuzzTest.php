@@ -118,4 +118,20 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
             if (!$divider && !$has3InIt && $has5InIt) { $this->assertTrue($numbers[$i] == 'Buzz'); }
         }
     }
+
+    /** @test */
+    public function if_number_has_five_and_three_in_it_its_already_fizzbuzz()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $numbers = $fizzBuzz->getData();
+
+        for($i=1; $i<count($numbers);$i++){
+            $divider = true;
+            $has3InIt = strpos((string)$i, '3') !== false;
+            $has5InIt = strpos((string)$i, '5') !== false;
+            if($i%5 != 0 && $i%3 != 0) $divider = false;
+            if (!$divider && $has3InIt && $has5InIt) { $this->assertTrue($numbers[$i] == 'FizzBuzz'); }
+        }
+    }
 }

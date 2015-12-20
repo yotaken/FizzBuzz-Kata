@@ -30,6 +30,7 @@ class FizzBuzz
             $has5InIt = strpos((string)$i, '5') !== false;
             if (!$divider && $has3InIt && !$has5InIt) { $numbers[$i] = 'Fizz'; }
             if (!$divider && !$has3InIt && $has5InIt) { $numbers[$i] = 'Buzz'; }
+            if (!$divider && $has3InIt && $has5InIt) { $numbers[$i] = 'FizzBuzz'; }
 
         }
 
