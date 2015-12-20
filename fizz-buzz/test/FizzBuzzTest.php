@@ -13,4 +13,12 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $this->assertTrue($fizzBuzz->changeMe());
     }
+
+    /** @test */
+    public function first_number_is_one()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $this->assertTrue($fizzBuzz->getData() == '1');
+    }
 }

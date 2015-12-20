@@ -12,4 +12,12 @@ class FizzBuzz
     {
         return true;
     }
+
+    /**
+     * @return bool
+     */
+    public function getData()
+    {
+        return '1';
+    }
 }
