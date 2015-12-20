@@ -29,11 +29,20 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $this->assertTrue($fizzBuzz->getData()[3] == 'Fizz');
     }
+
     /** @test */
     public function fifth_number_is_buzz()
     {
 
         $fizzBuzz = new FizzBuzz();
         $this->assertTrue($fizzBuzz->getData()[5] == 'Buzz');
+    }
+
+    /** @test */
+    public function fifteenth_number_is_fizzbuzz()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $this->assertTrue($fizzBuzz->getData()[15] == 'FizzBuzz');
     }
 }
