@@ -14,6 +14,15 @@ class FizzBuzz
     }
 
     /**
+     * @return bool
+     */
+    private function divisibleByThreeReturnsFizz($pos)
+    {
+        if($pos % 3 == 0) return 'Fizz';
+        return $pos;
+    }
+
+    /**
      * @return array
      */
     public function getData()
@@ -22,7 +31,7 @@ class FizzBuzz
         for($i = 1; $i < 101; $i++){
             $divider = true;
             $numbers[$i] = $i;
-            if($i % 3 == 0) $numbers[$i] = 'Fizz';
+            $numbers[$i] = $this->divisibleByThreeReturnsFizz($i);
             if($i % 5 == 0) $numbers[$i] = 'Buzz';
             if($i % 3 == 0 && $i % 5 == 0) $numbers[$i] = 'FizzBuzz';
             if($i%5 != 0 && $i%3 != 0) $divider = false;
