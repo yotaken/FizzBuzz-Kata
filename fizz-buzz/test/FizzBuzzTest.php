@@ -61,8 +61,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $numbers = $fizzBuzz->getData();
         for($i=1; $i<count($numbers);$i++){
-            if($i%3 == 0 && $i%5 != 0)
-                $this->assertTrue($numbers[$i] == 'Fizz');
+            if($i%3 == 0 && $i%5 != 0){ $this->assertTrue($numbers[$i] == 'Fizz');}
         }
     }
 
@@ -73,8 +72,7 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $numbers = $fizzBuzz->getData();
         for($i=1; $i<count($numbers);$i++){
-            if($i%5 == 0 && $i%3 != 0)
-                $this->assertTrue($numbers[$i] == 'Buzz');
+            if($i%5 == 0 && $i%3 != 0) {$this->assertTrue($numbers[$i] == 'Buzz');}
         }
     }
 
@@ -85,8 +83,21 @@ class FizzBuzzTest extends \PHPUnit_Framework_TestCase
         $fizzBuzz = new FizzBuzz();
         $numbers = $fizzBuzz->getData();
         for($i=1; $i<count($numbers);$i++){
-            if($i%5 == 0 && $i%3 == 0)
-                $this->assertTrue($numbers[$i] == 'FizzBuzz');
+            if($i%5 == 0 && $i%3 == 0) {$this->assertTrue($numbers[$i] == 'FizzBuzz');}
+        }
+    }
+
+    /** @test */
+    public function if_number_has_three_on_it_its_already_fizz()
+    {
+
+        $fizzBuzz = new FizzBuzz();
+        $numbers = $fizzBuzz->getData();
+
+        for($i=1; $i<count($numbers);$i++){
+            $divider = true;
+            if($i%5 != 0 && $i%3 != 0) $divider = false;
+            if (!$divider && strpos((string)$i,'3') !== false) { $this->assertTrue($numbers[$i] == 'Fizz'); }
         }
     }
 }
