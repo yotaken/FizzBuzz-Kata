@@ -4,6 +4,17 @@ namespace FizzBuzz;
 
 class FizzBuzz
 {
+    private $data;
+
+    /**
+     * FizzBuzz constructor.
+     * @param $data
+     */
+    public function __construct()
+    {
+        $this->data = $this->createNumberList();
+    }
+
 
     /**
      * @return bool
@@ -94,28 +105,45 @@ class FizzBuzz
     }
 
     /**
+     * @return mixed
+     */
+    private function setFizzBuzzIfNumberContainsThreeAndFive($pos, $numbers)
+    {
+        $divider = $this->isDivisibleByThreeOrFive($pos);
+        $has3InIt = $this->hasThreeInIt($pos);
+        $has5InIt = $this->hasFiveInIt($pos);
+        if(!$divider && $has3InIt && $has5InIt) $numbers[$pos] = 'FizzBuzz';
+
+        return $numbers;
+    }
+
+    /**
+     * @param $numbers
+     * @return mixed
+     */
+    public function createNumberList()
+    {
+        $numbers = array();
+        for ($i = 1; $i < 101; $i++) {
+            $numbers[$i] = $i;
+            $numbers = $this->divisibleByThreeSetsPositionAsFizz($i, $numbers);
+            $numbers = $this->divisibleByFiveSetsPositionAsBuzz($i, $numbers);
+            $numbers = $this->divisibleByFiveAndThreeSetsPositionAsFizzBuzz($i, $numbers);
+            $numbers = $this->setFizzIfNumberContainsThree($i, $numbers);
+            $numbers = $this->setBuzzIfNumberContainsFive($i, $numbers);
+            $numbers = $this->setFizzBuzzIfNumberContainsThreeAndFive($i, $numbers);
+        }
+        return $numbers;
+    }
+
+    /**
      * @return array
      */
     public function getData()
     {
-        $numbers = array();
-        for($i = 1; $i < 101; $i++){
-            $numbers[$i] = $i;
-            $numbers = $this->divisibleByThreeSetsPositionAsFizz($i,$numbers);
-            $numbers = $this->divisibleByFiveSetsPositionAsBuzz($i,$numbers);
-            $numbers = $this->divisibleByFiveAndThreeSetsPositionAsFizzBuzz($i,$numbers);
-            $divider = $this->isDivisibleByThreeOrFive($i);
-            $has3InIt = $this->hasThreeInIt($i);
-            $has5InIt = $this->hasFiveInIt($i);
-            $numbers = $this->setFizzIfNumberContainsThree($i,$numbers);
-            $numbers = $this->setBuzzIfNumberContainsFive($i,$numbers);
-            if (!$divider && $has3InIt && $has5InIt) { $numbers[$i] = 'FizzBuzz'; }
-
-        }
-
-        return $numbers;
+        return $this->data;
     }
 }
 
-$numbers = new FizzBuzz();
-var_dump($numbers->getData());
+//$numbers = new FizzBuzz();
+//var_dump($numbers->getData());
